@@ -2,7 +2,7 @@ const express = require('express')
 const sequelize = require('./db')
 const path = require('path')
 const server = express()
-const port = 3000
+const port = process.env.PORT || 3000
 
 require('./models/asociaciones')
 
