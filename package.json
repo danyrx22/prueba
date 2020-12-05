@@ -1,0 +1,20 @@
+{
+  "name": "dany-ventas",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js --ignore/public",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ilan teran",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.6",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {},
+  "description": "sistema para electivaa 3"
+}

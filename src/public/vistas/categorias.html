@@ -1,0 +1,75 @@
+<div id="contenedor_list">
+  
+    <h4 class="title">Listado Categorias</h4>
+
+    <button id="boton_nuevo" class="btn btn-primary ml-2 mb-2" onclick="add_categoria()">Agregar</button>
+    
+    
+    
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <div class="input-group">
+                <input type="text" id="buscar_cat" class="form-control col-md-10" placeholder="Buscar..." title="Buscar una categoria por nombre">
+                <button class="btn btn-secondary col-md-2"onclick="buscar_cat()">Buscar</button>
+            </div>
+            <span class="alerta-buscador text-danger"></span>
+        </div>
+    </div>
+    <table id="list_cat" class="table table-bordered table-collapse table-hover">
+        <thead>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Opciones</th>
+        </thead>
+
+        <tbody>
+           
+        </tbody>
+    </table>
+</div>
+
+<div id="contenedor_formulario">
+        <h4 class="title">Registrar Categoria</h4>
+        <form action="" id="regis_formulario" autocomplete="off">
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="nombre_cat" class="form-control-label">Nombre:</label>
+                    <input type="hidden" id="idCategoria">
+                    <input type="text" id="nombre_cat" class="form-control" placeholder="Nombre Categoria">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="descripcion_cat" class="form-control-label">Descripcion:</label>
+                    <textarea  id="descripcion_cat" class="form-control" placeholder="Descripcion..." cols="30" rows="3"></textarea>
+                </div>
+            </div>
+            <button type="button" class="btn btn-dark mb-2" onclick="cancelar_regis_categoria()">Cancelar</button>
+            <input type="submit" value="Registar Categoria" id="btnRegistrarCategoria" class="btn btn-success mb-2">
+        </form>
+
+        <script>
+            if($('#list_cat').length > 0){
+                $('#contenedor_formulario').hide()
+                datos_cat()
+    
+                $('#regis_formulario').on('submit', function(e){
+                    e.preventDefault()
+    
+                    if($('#idCategoria').val() === ''){
+                        regis_categoria() 
+                    }else{
+                        edit_categoria()
+                    } 
+                })
+    
+                $('#buscar_cat').change(function(){
+                    if($(this).val() === ''){
+                        datos_cat()
+                    }
+                })
+            }
+        </script>
+
+
+    </div>

@@ -1,0 +1,124 @@
+<div id="divListado">
+    
+        <h4 class="title">Listado Usuarios</h4>
+
+        <button id="btnAgregarUsuario" class="btn btn-primary ml-2 mb-2" onclick="agregar_usuario()">Agregar</button>
+    
+    
+    
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <div class="input-group">
+                <input type="text" id="buscar_usu" class="form-control col-md-10" placeholder="Buscar..." title="Buscar una usuario por nombre">
+                <button class="btn btn-secondary col-md-2" onclick="buscar_usuario()">Buscar</button>
+            </div>
+        </div>
+    </div>
+    <table id="lista_usario" class="table table-bordered table-collapse table-hover">
+        <thead>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>Usuario</th>
+            <th>Opciones</th>
+        </thead>
+
+        <tbody>
+            <tr>
+                
+            </tr>    
+        </tbody>
+    </table>
+</div>
+
+
+<div id="contedor_registro">
+    <h4 class="title">Registrar Usuario</h4>
+    <form action="" id="accion_registrar_usuario" autocomplete="off">
+        <div class="row">
+            <div class="form-group col-md-4">
+               <label for="dni_usario" class="form-control-label">Numero Documento: </label>
+               <input type="text" id="dni_usario" class="form-control" placeholder="Numero de Documento">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="nombre_usuario" class="form-control-label">Nombre: </label>
+                <input type="hidden" id="id_usuario">
+                <input type="text" id="nombre_usuario" class="form-control" placeholder="Nombre Usuario">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="telefono_usuario" class="form-control-label">Telefono: </label>
+                <input type="text" id="telefono_usuario" class="form-control" placeholder="Telefono Usuario">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="email_usuario" class="form-control-labe">Email: </label>
+                <input type="email" id="email_usuario" class="form-control" placeholder="Email Usuario">
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="direccion_usuario" class="form-control-label">Direccion: </label>
+                <input type="text" id="direccion_usuario" class="form-control" placeholder="Direccion Usuario">
+            </div>
+        </div>  
+        
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="usuario" class="form-control-label">Usuario:</label>
+                <input type="text" id="usuario" class="form-control" placeholder="Usuario">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="password" class="form-control-label">Contraseña: </label>
+                <input type="password" id="password" class="form-control" placeholder="Contraseña">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="rol" class="form-control-label">Rol: </label>
+                <select id="rol" class="custom-select">
+                    
+                </select>
+            </div>
+        </div>
+        
+        <button type="button" class="btn btn-dark mb-2"onclick="cancelar_registro_usuario()">Cancelar</button>
+        <input type="submit" value="Registar Usuario" id="boton_registra_usuario" class="btn btn-success mb-2">
+    </form>
+
+        
+    <script>
+        if($('#lista_usario').length > 0){
+            $('#contedor_registro').hide()
+            seleccionar_rol_usuario()
+            datos_usuario()
+            $('#accion_registrar_usuario').on('submit', function(e){
+                    e.preventDefault()
+    
+                    if($('#id_usuario').val() === ''){
+                        registrar_usuario() 
+                    }else{
+                        
+                        editar_usuario()
+
+                      
+                    } 
+                })
+
+                        
+              $('#buscar_usu').change(function(){
+                   if($(this).val() === ''){
+                        datos_usuario()
+                  }
+                 })
+           
+        }
+    </script>
+
+
+
+
+
+
+
+</div>

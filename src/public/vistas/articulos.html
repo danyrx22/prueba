@@ -1,0 +1,103 @@
+<div id="divListado">
+    
+        <h4 class="title">Listado Articulos</h4>
+        <button id="boton_agregar_art" class="btn btn-primary ml-2 mb-2" onclick="add_art()">Agregar</button>
+    
+    
+  
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <div class="input-group">
+                <input type="text" id="buscar_articulos" class="form-control col-md-10" placeholder="Buscar..." title="Buscar un articulo por código o nombre">
+                <button class="btn btn-secondary col-md-2" onclick="buscar_art()">Buscar</button>
+            </div>
+        </div>
+    </div>
+    <table id="list_art" class="table table-bordered table-collapse table-hover">
+        <thead>
+            <th>Id</th>
+            <th>Categoria</th>
+            <th>Nombre</th>
+            <th>Código</th>
+            <th>Stock</th>
+            <th>Estado</th>
+            <th>Opciones</th>
+        </thead>
+
+        <tbody>
+           
+        </tbody>
+    </table>
+    
+    <script>
+        if($('#list_art').length > 0){
+            $('#contenedor_formulario').hide()
+            datosSelectCategorias()
+           date_art()
+
+            $('#formularioRegistroArticulo').on('submit', function(e){
+                e.preventDefault()
+        
+                if($('#id_art').val() === ''){
+                    regis_art() 
+                }else{
+                    edit_art()
+                } 
+            })
+
+            $('#buscar_articulos').change(function(){
+                if($(this).val() === ''){
+                    date_art()
+                }
+            })
+        }
+    </script>
+
+<div id="contenedor_formulario">
+    <h4 class="title">Registrar Articulo</h4>
+    <form action="" id="formularioRegistroArticulo" autocomplete="off">
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="select_categoria_art" class="form-control-labe">Categoria: </label>
+                <select id="select_categoria_art" class="custom-select">
+                    
+                </select>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="nombre_art" class="form-control-labe">Nombre: </label>
+                <input type="hidden" id="id_art">
+                <input type="text" id="nombre_art" class="form-control" placeholder="Nombre Articulo">
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="cod_art" class="form-control-labe">Codigo: </label>
+                <input type="text" id="cod_art" class="form-control" placeholder="Codigo Articulo">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="precio_venta_art" class="form-control-label">Precio Venta:</label>
+                <input type="number" id="precio_venta_art" class="form-control" placeholder="Precio Venta" maxlength="9">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="stock_art" class="form-control-label">Stock:</label>
+                <input type="number" id="stock_art" class="form-control" placeholder="Stock Articulo" maxlength="9">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="descrip_art" class="form-control-label">Descripcion:</label>
+                <textarea  id="descrip_art" class="form-control" placeholder="Descripcion..." cols="30" rows="3"></textarea>
+            </div>
+        </div>
+        
+        <button type="button" class="btn btn-dark mb-2" onclick="cancelarRegistroArticulo()">Cancelar</button>
+        <input type="submit" value="Registar Articulo" id="boton_registrar_art" class="btn btn-success mb-2">
+    </form>
+</div>
+
+
+
+</div>

@@ -1,0 +1,93 @@
+<div id="divListado">
+    
+        <h4 class="title">Listado Clientes</h4>
+
+        <button id="boton_agregar_cliente" class="btn btn-primary ml-2 mb-2" onclick="agregar_cliente()">Agregar</button>
+    
+    
+    
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <div class="input-group">
+                <input type="text" id="buscar_cliente" class="form-control col-md-10" placeholder="Buscar..." title="Buscar una cliente por nombre">
+                <button class="btn btn-secondary col-md-2" onclick="buscar_cliente()">Buscar</button>
+            </div>
+        </div>
+    </div>
+    <table id="listar_cliente" class="table table-bordered table-collapse table-hover">
+        <thead>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>Opciones</th>
+        </thead>
+
+        <tbody>
+            <tr>
+               
+            </tr>    
+        </tbody>
+    </table>
+
+
+    <div id="contenedor_registro_cliente">
+        <h4 class="title">Registrar Cliente</h4>
+        <form action="" id="accion_registrar_cliente" autocomplete="off">
+            <div class="row">
+                <div class="form-group col-md-4">
+                   <label for="dni_cliente" class="form-control-label">Numero Documento: </label>
+                   <input type="hidden" id="id_cliente">
+                   <input type="text" id="dni_cliente" class="form-control" placeholder="Numero de Documento">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="nombre_cliente" class="form-control-label">Nombre: </label>
+                    <input type="text" id="nombre_cliente" class="form-control" placeholder="Nombre Cliente">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="telefono_cliente" class="form-control-label">Telefono: </label>
+                    <input type="text" id="telefono_cliente" class="form-control" placeholder="Telefono Cliente">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="email_cliente" class="form-control-labe">Email: </label>
+                    <input type="email" id="email_cliente" class="form-control" placeholder="Email Cliente">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="direccion_cliente" class="form-control-label">Direccion: </label>
+                    <input type="text" id="direccion_cliente" class="form-control" placeholder="Direccion Cliente">
+                </div>
+            </div>                             
+            
+            <button type="button" class="btn btn-dark mb-2" onclick="cancelar_registro_cliente()">Cancelar</button>
+            <input type="submit" value="Registar Proveedor" id="boton_registrar_cliente" class="btn btn-success mb-2">
+        </form>
+    </div>
+
+    <script>
+        if($('#listar_cliente').length > 0){
+            $('#contenedor_registro_cliente').hide()
+            datos_clientes()
+
+            $('#accion_registrar_cliente').on('submit', function(e){
+                e.preventDefault()
+        
+                if($('#id_cliente').val() === ''){
+                    registrar_cliente() 
+                }else{
+                  editar_cliente()
+                } 
+            })
+
+            $('#buscar_cliente').change(function(){
+                if($(this).val() === ''){
+                    datos_clientes()
+                }
+            })
+        }
+    </script>
+</div>

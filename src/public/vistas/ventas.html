@@ -1,0 +1,161 @@
+<div id="divListado">
+    <div class="row">
+        <h4 class="title">Listado Ventas</h4>
+
+        <button id="bonton_agregar_venta" class="btn btn-primary ml-2 mb-2" onclick="agregar_venta()">Agregar</button>
+    </div>
+    
+    
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <div class="input-group">
+                <input type="text" id="buscar_ventas" class="form-control col-md-10" placeholder="Buscar..." title="Buscar una ingreso por nombre">
+                <button class="btn btn-secondary col-md-2" onclick="buscar_ventas()">Buscar</button>
+            </div>
+        </div>
+    </div>
+    <table id="listado_ventas" class="table table-bordered table-collapse table-hover">
+        <thead>
+            <th>Fecha</th>
+            <th>Cliente</th>
+            <th>Comprobante</th>
+            <th>Impuesto</th>
+            <th>Total</th>
+            <th>Estado</th>
+            <th>Opciones</th>
+        </thead>
+
+        <tbody>
+            
+        </tbody>
+    </table>
+
+
+    <div id="contenedor_registro">
+        <h4 class="title">Registrar Ventas</h4>
+        <form action="" id="accion_registrar_venta" autocomplete="off">
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label for="cliente" class="form-control-label"> Cliente:</label>
+                    <select id="cliente" class="custom-select">
+                       
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="tipo_comprobante" class="form-control-labe">Tipo Comprobante: </label>
+                    <select id="tipo_comprobante" class="custom-select">
+                        <option value="Boleta">Boleta</option>
+                        <option value="Factura">Factura</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="serie_comprobante" class="form-control-label">Serie: </label>
+                    <input type="text" id="serie_comprobante" class="form-control" placeholder="Serie comprobante">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="numero_comprobante" class="form-control-label">Numero: </label>
+                    <input type="text" id="numero_comprobante" class="form-control" placeholder="Numero comprobante">
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="producto" class="form-control-label">Producto: </label>
+                    <select id="productos" class="custom-select">
+                       
+                    </select>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label for="cantidad" class="form-control-label">Cantidad:</label>
+                    <input type="number" id="cantidad" class="form-control" size="5" maxlength="5">
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label for="precio" class="form-control-label">Precio: </label>
+                    <input type="number" id="precio" class="form-control" size="9" maxlength="9">
+                </div>
+
+                <div class="form-group col-md-2">
+                    <button type="button" id="boton_agregar_producto" class="btn btn-secondary" onclick="agregar_producto()">Añadir</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <table id="lista_productos" class="table table-bordered table-hover">
+                    <thead>
+                        <th>Opciones</th>
+                        <th>Articulo</th>
+                        <th>Cantidad</th>
+                        <th>Precio Compra</th>
+                        <th>SubTotal</th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>
+                                Impuesto (16%)
+                                <input type="hidden" id="impuesto">
+                            </th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td id="datos_impustos">
+                                Bs/0.00
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Total
+                                <input type="hidden" id="total">
+                            </th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td id="datoTotal">
+                                Bs/0.00
+                            </td>
+                        </tr>
+                        
+                    </tfoot>
+                </table>
+            </div>
+
+            <div class="row">
+                <div class="form-group alertas-formulario col-md-8 text-center">
+                    
+                </div>
+            </div>
+            <button type="button"  class="btn btn-dark mb-2" id="boton_cancelar" onclick="cancelar_registro_ventas()">Cancelar</button>
+            <input type="submit" value="Registar Ingreso" id="bonton_registrar_ventas" class="btn btn-success mb-2">
+        </form>
+    </div>
+
+    <script>
+        if($('#listado_ventas').length > 0){
+            $('#contenedor_registro').hide()
+            datos_ventas()
+            lista_cliente()
+            lista_productos()
+
+            $('#accion_registrar_venta').on('submit', function(e){
+                e.preventDefault()
+                registrar_venta() 
+            })
+
+            $('#buscar_ventas').change(function(){
+                if($(this).val() === ''){
+                    datos_ventas()
+                }
+            })
+        }
+    </script>
+</div>
